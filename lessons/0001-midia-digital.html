@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Encontro 1 — Mídia digital e qualidade na web</title>
+<link rel="stylesheet" href="../assets/curso.css">
+<script src="../assets/curso.js" defer></script>
+</head>
+<body class="deck">
+
+<section class="slide capa">
+  <span class="rotulo">UC07 · Criação e Editoração de Multimídia · Encontro 1 de 4</span>
+  <h1>Mídia digital e qualidade na web</h1>
+  <p class="sub">Por que uma imagem pesa, como ela perde qualidade e quem sente isso no site</p>
+  
+</section>
+
+<section class="slide">
+  <h2>A matéria: Criação e Editoração de Multimídia</h2>
+  <div class="duas">
+    <div>
+      <div class="caixa">
+        <span class="rotulo">Do que se trata</span>
+        <p>Criar e preparar os <strong>elementos de mídia</strong> que compõem a interface de um site: imagens, logotipos, ícones, áudio e vídeo.</p>
+        <p><strong>Editorar</strong> é deixar esse material pronto para publicar: recortar, tratar, converter e comprimir.</p>
+      </div>
+      <div class="caixa ideia">
+        <span class="rotulo">Por que importa</span>
+        <p>No site que vamos analisar hoje, <strong>uma única foto pesa 2,1 MB</strong>, quase 200 vezes o código da página. O técnico decide formato, tamanho e qualidade de cada mídia.</p>
+      </div>
+    </div>
+    <div class="caixa">
+      <span class="rotulo">Nos quatro encontros</span>
+      <ol>
+        <li><strong>Mídia digital:</strong> pixel, peso, formatos, interface e acessibilidade.</li>
+        <li><strong>Tratamento de imagem:</strong> recorte, camadas, brilho e contraste.</li>
+        <li><strong>Composição e identidade:</strong> cor, tipografia e logotipo.</li>
+        <li><strong>Áudio e vídeo:</strong> formatos, cortes e direito autoral.</li>
+      </ol>
+    </div>
+  </div>
+  <p class="fonte">Plano de curso, UC07: objetivo geral. Livro, p. 13.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Como vamos trabalhar</h2>
+  <div class="duas">
+    <div class="caixa">
+      <span class="rotulo">Em cada encontro</span>
+      <ul>
+        <li><strong>Explicação</strong> do conteúdo, com exemplos e números.</li>
+        <li><strong>Prática</strong> no laboratório, com arquivos de um cliente fictício: a cafeteria <strong>Grão da Esquina</strong>.</li>
+        <li>Uma <strong>lista</strong> para entregar, que você começa em aula e termina em casa.</li>
+      </ul>
+    </div>
+    <div class="caixa aviso">
+      <span class="rotulo">Seu trabalho</span>
+      <p>Estas máquinas voltam ao estado original quando reiniciam. Tudo o que for seu fica <strong>na sua nuvem</strong> ou no seu pendrive, nunca só no computador.</p>
+      <p>Base de estudo: o livro da matéria. Cada slide indica a página.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="slide">
+  <h2>Antes de começar: o que você acha?</h2>
+  <div class="quiz">
+    <p class="pergunta">1. A mesma foto de 1600 × 1068 pixels. Qual arquivo fica mais pesado?</p>
+    <ol>
+      <li data-certa>PNG</li>
+      <li>GIF</li>
+      <li>JPEG com qualidade 60</li>
+    </ol>
+    <div class="explica">PNG: 1.654 kB. GIF: 892 kB. JPEG: 91 kB. Vamos entender o motivo.</div>
+  </div>
+  <div class="quiz">
+    <p class="pergunta">2. Um logotipo pequeno foi ampliado e ficou borrado. Por quê?</p>
+    <ol>
+      <li>O monitor é ruim</li>
+      <li data-certa>O computador teve de inventar pixels que não existiam</li>
+      <li>Faltou internet</li>
+    </ol>
+    <div class="explica">A imagem só tem os pixels guardados no arquivo. Ampliar não cria detalhe.</div>
+  </div>
+  <div class="quiz">
+    <p class="pergunta">3. Um site só funciona com mouse. Quem é mais prejudicado?</p>
+    <ol>
+      <li>Quem usa internet lenta</li>
+      <li data-certa>Quem tem restrição motora</li>
+      <li>Quem usa tela grande</li>
+    </ol>
+    <div class="explica">É um problema de acessibilidade. Veremos como testar isso em qualquer site.</div>
+  </div>
+  
+</section>
+
+<section class="slide">
+  <h2>O cliente: Grão da Esquina</h2>
+  <div class="duas larga-estreita">
+    <div>
+      <div class="caixa">
+        <p>"Meu site demora para abrir no celular. A foto do balcão está lá do jeito que saiu da câmera. Meu logotipo aparece com um quadrado branco em volta. E uma cliente não conseguiu chegar ao cardápio pelo teclado."</p>
+      </div>
+      <p>Cada queixa tem uma causa técnica: <strong>peso do arquivo</strong>, <strong>formato errado</strong> e <strong>falta de acessibilidade</strong>. Hoje você vai aprender a explicar, medir e corrigir cada uma.</p>
+      <p>Mais tarde, vamos abrir o site atual da cafeteria para encontrar esses problemas.</p>
+    </div>
+    <figure class="figura">
+      <img src="../assets/img/encontro-01/foto-inteira.jpg" alt="Duas xícaras marrons recebendo café de uma máquina de espresso">
+      <figcaption>A foto do balcão. CC0, Chevanon Photography, via Wikimedia Commons.</figcaption>
+    </figure>
+  </div>
+  
+</section>
+
+<section class="slide secao">
+  <h2>O que é mídia digital</h2>
+  <p>De onde vem o arquivo que o site precisa baixar</p>
+</section>
+
+<section class="slide">
+  <h2>Mídia analógica e mídia digital</h2>
+  <p><em class="termo">Mídia</em> é tudo aquilo que pode transmitir informação ao usuário: revista, rádio, televisão, internet. A palavra vem do inglês <em>media</em>, os meios de comunicação.</p>
+  <table>
+    <tr><th></th><th>Analógica</th><th>Digital</th></tr>
+    <tr><td><strong>Como a informação existe</strong></td><td>Em um meio físico: papel, disco de vinil</td><td>Em zeros e uns, os <strong>bits</strong>, lidos por um dispositivo</td></tr>
+    <tr><td><strong>Comunicação</strong></td><td>De um emissor para um receptor</td><td>Amplia a possibilidade de resposta, principalmente na internet</td></tr>
+    <tr><td><strong>Vantagem</strong></td><td>Não depende de aparelho para ser lida</td><td>Fácil de armazenar, copiar e distribuir</td></tr>
+    <tr><td><strong>Na cafeteria</strong></td><td>Cardápio impresso no balcão</td><td>Cardápio no site, com foto de cada item</td></tr>
+  </table>
+  <div class="caixa ideia"><strong>Digitalizar</strong> é transformar a informação em números. Uma foto vira uma grade de pontos coloridos; um som vira uma sequência de medições. Esses números ficam em um <strong>arquivo</strong>, cujo tamanho é o seu <strong>peso</strong>.</div>
+  <p class="fonte">Livro, p. 29–30; som como medições: p. 87. Exemplos da cafeteria: nossos.</p>
+</section>
+
+<section class="slide">
+  <h2>Multimídia e hipermídia</h2>
+  <div class="duas">
+    <div class="caixa">
+      <span class="rotulo">Multimídia</span>
+      <p>Conjunto de <strong>duas ou mais mídias</strong> para transmitir a mensagem de forma mais rica. É mais fácil lembrar de algo quando um texto vem junto de uma imagem ou de uma música.</p>
+      <p>O vídeo é o exemplo clássico: reúne texto, imagem, movimento e som ao mesmo tempo.</p>
+    </div>
+    <div class="caixa">
+      <span class="rotulo">Hipertexto e hipermídia</span>
+      <p><strong>Hipertexto</strong> é o texto na web, com links que levam a outras páginas.</p>
+      <p><strong>Hipermídia</strong> amplia a ideia: além do texto, inclui imagens, sons, vídeos e arquivos. A própria internet é o maior exemplo.</p>
+    </div>
+  </div>
+  <div class="caixa ideia">O site da Grão da Esquina é hipermídia: texto, fotos, logotipo, ícones e links. Cada um desses elementos é um arquivo, e cada arquivo é uma decisão técnica: <strong>qual formato, qual tamanho, qual qualidade</strong>.</div>
+  <p class="fonte">Livro, p. 30–32.</p>
+</section>
+
+<section class="slide secao">
+  <h2>A imagem digital</h2>
+  <p>Pixel, resolução e o motivo de um arquivo pesar tanto</p>
+</section>
+
+<section class="slide">
+  <h2>O pixel</h2>
+  <div class="duas estreita-larga">
+    <figure class="figura">
+      <img class="pixels" src="../assets/img/encontro-01/pixels.png" alt="Pequeno trecho da foto muito ampliado, com quadrados de cor visíveis">
+      <figcaption>24 × 18 pixels da foto do balcão, muito ampliados. É o filete de café caindo na xícara.</figcaption>
+    </figure>
+    <div>
+      <p>Uma imagem digital é uma <strong>grade de quadradinhos</strong>. Cada quadradinho é um <em class="termo">pixel</em>: o menor componente da imagem. Cada pixel tem <strong>uma só cor</strong>.</p>
+      <p>Essa cor é a mistura de três luzes: <strong>vermelho, verde e azul</strong>. É o padrão <em class="termo">RGB</em>, das iniciais em inglês (<em>red, green, blue</em>). A tela acende as três em intensidades diferentes para formar cada cor.</p>
+      <p>Vista de longe, a grade some e o olho enxerga uma foto contínua. Vista de perto, como ao lado, aparecem os quadradinhos.</p>
+    </div>
+  </div>
+  <p class="fonte">Livro, p. 42.</p>
+</section>
+
+<section class="slide">
+  <h2>Resolução: quantos pixels a imagem tem</h2>
+  <div class="duas">
+    <div>
+      <p>A <em class="termo">resolução</em> de uma imagem diz quantos pixels ela tem <strong>na largura e na altura</strong>. Escreve-se <strong>largura × altura</strong>.</p>
+      <div class="caixa ideia">
+        <span class="rotulo">Como calcular o total de pixels</span>
+        <p class="grande">largura × altura</p>
+        <p>Foto do balcão: 1600 × 1068 = <strong>1.708.800 pixels</strong></p>
+        <p>1 <strong>megapixel</strong> = 1 milhão de pixels. A foto tem cerca de 1,7 megapixel.</p>
+      </div>
+    </div>
+    <div>
+      <p>As <strong>telas</strong> também têm resolução, pois também são grades de pixels: 1280 × 720, 1440 × 900, 1920 × 1080…</p>
+      <p>Por isso, uma foto de 1600 pixels de largura não cabe inteira em uma tela de 1280: o site precisa reduzi-la na exibição.</p>
+      <div class="caixa">
+        <span class="rotulo">E a câmera do celular?</span>
+        <p>Uma câmera que faz fotos de 4000 × 3000 gera 4000 × 3000 = <strong>12.000.000 pixels</strong>, ou 12 megapixels. Bem mais do que qualquer tela consegue mostrar de uma vez.</p>
+      </div>
+    </div>
+  </div>
+  <p class="fonte">Livro, p. 42. A câmera de 4000 × 3000 é um exemplo nosso.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Dobrar o tamanho não dobra os pixels</h2>
+  <div class="duas">
+    <div class="comparar c2">
+      <figure><img class="pixels" src="../assets/img/encontro-01/grade-2x2.png" alt="Grade de 2 por 2 quadrados"><figcaption><strong>2 × 2 = 4 pixels</strong></figcaption></figure>
+      <figure><img class="pixels" src="../assets/img/encontro-01/grade-4x4.png" alt="Grade de 4 por 4 quadrados"><figcaption><strong>4 × 4 = 16 pixels</strong></figcaption></figure>
+    </div>
+    <div>
+      <p>Ao dobrar a largura <strong>e</strong> a altura, a quantidade de pixels fica <strong>quatro vezes maior</strong>, porque 2 × 2 = 4.</p>
+      <table>
+        <tr><th>Resolução</th><th class="num">Pixels</th></tr>
+        <tr><td>400 × 267</td><td class="num">106.800</td></tr>
+        <tr><td>800 × 534</td><td class="num">427.200</td></tr>
+        <tr><td>1600 × 1068</td><td class="num">1.708.800</td></tr>
+      </table>
+      <p>O contrário também vale: reduzir a foto pela metade em cada lado deixa só <strong>um quarto</strong> dos pixels. É uma das formas mais eficazes de deixar uma imagem mais leve.</p>
+    </div>
+  </div>
+  <p class="fonte">Conta nossa, a partir do conceito de resolução do livro (p. 42).</p>
+</section>
+
+<section class="slide">
+  <h2>ppi: o pixel no mundo físico</h2>
+  <div class="duas">
+    <div>
+      <p>O pixel <strong>não tem medida própria</strong>: na tela do celular ele é minúsculo, e no telão ele é grande. Quem define o tamanho físico é o lugar onde a imagem aparece.</p>
+      <p>Essa relação se chama <em class="termo">ppi</em>, pixels por polegada (<em>pixels per inch</em>). Quanto mais pixels em cada polegada, mais fina é a grade e mais nítida a imagem.</p>
+      <p>1 polegada = 2,54 cm.</p>
+    </div>
+    <div class="caixa ideia">
+      <span class="rotulo">Quanto a foto mede impressa a 200 ppi?</span>
+      <p>Largura: 1600 ÷ 200 = 8 polegadas × 2,54 = <strong>20,3 cm</strong></p>
+      <p>Altura: 1068 ÷ 200 = 5,34 polegadas × 2,54 = <strong>13,6 cm</strong></p>
+      <p>Impressa a 100 ppi, sai com o dobro do tamanho, mas a grade fica mais grossa e a imagem menos nítida.</p>
+    </div>
+  </div>
+  <div class="caixa aviso"><strong>Na web, o que importa é a resolução em pixels.</strong> O ppi faz diferença sobretudo ao imprimir, como em um cardápio de papel.</div>
+  <p class="fonte">Livro, p. 42. As contas de impressão são nossas.</p>
+</section>
+
+<section class="slide">
+  <h2>Como o computador guarda a cor de um pixel</h2>
+  <div class="duas">
+    <div>
+      <ul>
+        <li>O <em class="termo">bit</em> é a menor informação digital: <strong>0 ou 1</strong>.</li>
+        <li>Um <em class="termo">byte</em> é um grupo de <strong>8 bits</strong>.</li>
+        <li>Com 8 bits, há 2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 = <strong>256 combinações</strong>, que representam os valores de 0 a 255.</li>
+      </ul>
+      <p>Em uma imagem comum, cada luz do RGB usa 1 byte: de <strong>0</strong> (apagada) a <strong>255</strong> (acesa ao máximo). Logo, cada pixel guarda <strong>3 números, em 3 bytes</strong>.</p>
+    </div>
+    <div>
+      <div class="caixa ideia">
+        <span class="rotulo">Um pixel do filete de café</span>
+        <p class="grande">R 208 · G 125 · B 58</p>
+        <p>Muito vermelho, um pouco de verde e pouco azul: um laranja.</p>
+      </div>
+      <div class="caixa">
+        <span class="rotulo">Quantas cores dá para formar?</span>
+        <p>256 × 256 × 256 = <strong>16.777.216 cores</strong>, cerca de 16,7 milhões.</p>
+      </div>
+    </div>
+  </div>
+  <p class="fonte">RGB: livro, p. 42; 256 níveis de cor: p. 79–80. 8 bits por canal: MDN, guia de formatos de imagem. A cor foi medida no pixel da foto.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Calculando o peso de uma imagem sem compressão</h2>
+  <div class="duas">
+    <div>
+      <div class="caixa">
+        <span class="rotulo">Passo 1 · quantos pixels</span>
+        <p>1600 × 1068 = 1.708.800 pixels</p>
+      </div>
+      <div class="caixa">
+        <span class="rotulo">Passo 2 · quantos bytes</span>
+        <p>1.708.800 × 3 bytes = <strong>5.126.400 bytes</strong></p>
+      </div>
+      <div class="caixa">
+        <span class="rotulo">Passo 3 · em unidades maiores</span>
+        <p>÷ 1.000 = 5.126 kB (quilobytes) · ÷ 1.000.000 = <strong>5,1 MB</strong> (megabytes)</p>
+      </div>
+    </div>
+    <div>
+      <p>Para a foto que saiu da câmera, com <strong>5533 × 3694</strong> pixels:</p>
+      <p>5533 × 3694 × 3 = <strong>61.316.706 bytes</strong>, ou cerca de <strong>61 MB</strong>.</p>
+      <p>Sem compressão, uma única foto pesaria mais que muitos aplicativos de celular. É o que acontece no formato <strong>BMP</strong>, pouco visto na internet por esse motivo.</p>
+      <div class="caixa aviso">Ninguém publica imagem assim. Na prática, os formatos usam <strong>compressão</strong>. É o próximo assunto.</div>
+    </div>
+  </div>
+  <p class="fonte">BMP: livro, p. 81. Conta nossa, a partir de RGB (p. 42). Aqui, 1 kB = 1.000 bytes.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Bitmap: a imagem feita de pixels</h2>
+  <div class="duas">
+    <div>
+      <p>Tudo o que vimos até aqui é <em class="termo">bitmap</em> (mapa de bits): o arquivo guarda a <strong>cor de cada pixel</strong>, um por um.</p>
+      <ul>
+        <li><strong>De onde vem:</strong> câmera, scanner, captura de tela.</li>
+        <li><strong>Ponto forte:</strong> fotos, com todos os detalhes e transições.</li>
+        <li><strong>Limite:</strong> número fixo de pixels. Ao ampliar, o programa calcula pixels novos a partir dos vizinhos (<em class="termo">interpolação</em>), e a imagem serrilha ou borra.</li>
+        <li><strong>Peso e formatos:</strong> o peso cresce com os pixels. São bitmaps o JPEG, o PNG, o GIF, o BMP e o XCF do GIMP.</li>
+      </ul>
+    </div>
+    <div class="comparar menor">
+      <figure><img class="pixels" src="../assets/img/encontro-01/logo-120.png" alt="Logotipo de 120 pixels ampliado, com quadrados visíveis"><figcaption><strong>Ampliado sem interpolação: serrilhado</strong></figcaption></figure>
+      <figure><img src="../assets/img/encontro-01/logo-120.png" alt="O mesmo logotipo ampliado com suavização, borrado"><figcaption><strong>Ampliado com interpolação: borrado</strong></figcaption></figure>
+    </div>
+  </div>
+  <p class="fonte">Livro, p. 42, 69–70 e 80–81. O termo "bitmap" é complemento.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Vetor: a imagem feita de instruções</h2>
+  <div class="duas">
+    <div>
+      <p>Um <em class="termo">vetor</em> não guarda pixels. Ele guarda a <strong>receita do desenho</strong>:</p>
+      <ul>
+        <li><strong>pontos</strong>, com suas coordenadas;</li>
+        <li><strong>retas e curvas</strong> entre eles; a curva é controlada pelas <strong>linhas de direção</strong>;</li>
+        <li><strong>características</strong>, como cor de preenchimento e contorno.</li>
+      </ul>
+      <p>Na hora de mostrar, o programa <strong>desenha de novo</strong> na resolução da tela. Por isso o vetor pode ser ampliado sem perder qualidade.</p>
+      <p>Como o arquivo guarda só as coordenadas e as características dos pontos, e não todos os pixels, ele <strong>consome poucos recursos</strong>.</p>
+    </div>
+    <figure class="figura">
+      <img src="../assets/img/encontro-01/vetor-pontos.svg" alt="Três pontos ligados por uma reta e uma curva, com as linhas de direção da curva">
+      <figcaption>Um vetor com três pontos, uma reta e uma curva.</figcaption>
+    </figure>
+  </div>
+  <p class="fonte">Livro, p. 57–59. Na web, o formato vetorial é o SVG (MDN).</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Bitmap ou vetor?</h2>
+  <div class="comparar c2">
+    <figure><img class="pixels" src="../assets/img/encontro-01/logo-120.png" alt="Logotipo bitmap de 120 pixels ampliado e serrilhado"><figcaption><strong>Bitmap PNG, 120 pixels de largura, ampliado</strong><span class="peso">2,9 kB</span></figcaption></figure>
+    <figure><img src="../assets/img/encontro-01/logo.svg" alt="O mesmo logotipo em vetor, nítido"><figcaption><strong>Vetor SVG, no mesmo tamanho</strong><span class="peso">1,0 kB</span></figcaption></figure>
+  </div>
+  <table>
+    <tr><th></th><th>Bitmap</th><th>Vetor</th></tr>
+    <tr><td><strong>Guarda</strong></td><td>A cor de cada pixel</td><td>Pontos, linhas, curvas e cores</td></tr>
+    <tr><td><strong>Ao ampliar</strong></td><td>Serrilha ou borra</td><td>Continua nítido</td></tr>
+    <tr><td><strong>Serve para</strong></td><td>Fotos e imagens com muitos detalhes</td><td>Logotipos, ícones e ilustrações simples</td></tr>
+  </table>
+  <p class="fonte">Livro, p. 42 e 57–59. MDN, SVG. Pesos medidos nos arquivos do pacote.</p>
+  
+</section>
+
+<section class="slide secao">
+  <h2>Compressão e formatos</h2>
+  <p>Como a mesma foto cai de 5,1 MB para menos de 100 kB</p>
+</section>
+
+<section class="slide">
+  <h2>Compressão: o que é</h2>
+  <div class="duas">
+    <div>
+      <p><em class="termo">Comprimir</em> é guardar a mesma imagem com <strong>menos bytes</strong>.</p>
+      <div class="caixa certo">
+        <span class="rotulo">Sem perda</span>
+        <p>Ao abrir, volta <strong>exatamente</strong> a imagem original, mesmo depois de salvar várias vezes. Exemplos: <strong>PNG</strong> e <strong>GIF</strong>.</p>
+      </div>
+      <div class="caixa aviso">
+        <span class="rotulo">Com perda</span>
+        <p>Descarta detalhes que o olho percebe menos, e eles <strong>não voltam</strong>. Em troca, o arquivo fica muito menor. Exemplo: <strong>JPEG</strong>.</p>
+      </div>
+    </div>
+    <div class="caixa ideia">
+      <span class="rotulo">A mesma foto de 1600 × 1068</span>
+      <table>
+        <tr><th>Arquivo</th><th class="num">Peso</th></tr>
+        <tr><td>Sem compressão (conta)</td><td class="num">5.126 kB</td></tr>
+        <tr><td>PNG, sem perda</td><td class="num">1.654 kB</td></tr>
+        <tr><td>GIF, 256 cores</td><td class="num">892 kB</td></tr>
+        <tr><td>JPEG qualidade 90</td><td class="num">279 kB</td></tr>
+        <tr><td>JPEG qualidade 60</td><td class="num">91 kB</td></tr>
+        <tr><td>JPEG qualidade 10</td><td class="num">29 kB</td></tr>
+      </table>
+    </div>
+  </div>
+  <p class="fonte">Livro, p. 81. Pesos medidos nos arquivos do pacote.</p>
+</section>
+
+<section class="slide">
+  <h2>Como a compressão economiza bytes</h2>
+  <div class="duas">
+    <div class="caixa certo">
+      <span class="rotulo">A ideia da compressão sem perda</span>
+      <p>Imagine uma linha da imagem com 50 pixels brancos seguidos. Em vez de escrever "branco" 50 vezes, o arquivo anota <strong>"50 × branco"</strong>.</p>
+      <p>Nada se perde: ao abrir, os 50 pixels voltam iguais. Funciona muito bem em logotipos e ícones, com áreas de cor lisa. Em uma foto, quase não há pixels vizinhos iguais, e por isso o PNG da foto ficou pesado.</p>
+    </div>
+    <div class="caixa aviso">
+      <span class="rotulo">A ideia da compressão com perda</span>
+      <p>O JPEG divide a imagem em <strong>pequenos blocos</strong> e simplifica os detalhes finos de cada um, que o olho mal nota em uma foto.</p>
+      <p>A <strong>qualidade</strong>, de 0 a 100, diz quanto simplificar. Com qualidade baixa demais, os blocos aparecem e surgem manchas perto de bordas e letras.</p>
+    </div>
+  </div>
+  <p class="fonte">Explicação simplificada nossa. JPEG baseado em blocos (DCT): MDN, guia de formatos de imagem. Compressão sem e com perda: livro, p. 81.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>JPEG: você escolhe o quanto perder</h2>
+  <div class="comparar c4">
+    <figure><img class="pixels" src="../assets/img/encontro-01/recorte-q90.png" alt="Recorte da foto em JPEG qualidade 90, sem defeitos visíveis"><figcaption><strong>Qualidade 90</strong><span class="peso">279 kB</span></figcaption></figure>
+    <figure><img class="pixels" src="../assets/img/encontro-01/recorte-q60.png" alt="Recorte da foto em JPEG qualidade 60, quase igual à anterior"><figcaption><strong>Qualidade 60</strong><span class="peso">91 kB</span></figcaption></figure>
+    <figure><img class="pixels" src="../assets/img/encontro-01/recorte-q30.png" alt="Recorte da foto em JPEG qualidade 30, com leves blocos"><figcaption><strong>Qualidade 30</strong><span class="peso">59 kB</span></figcaption></figure>
+    <figure><img class="pixels" src="../assets/img/encontro-01/recorte-q10.png" alt="Recorte da foto em JPEG qualidade 10, com blocos e manchas visíveis"><figcaption><strong>Qualidade 10</strong><span class="peso">29 kB</span></figcaption></figure>
+  </div>
+  <ul>
+    <li>De 90 para 60, o peso cai a <strong>um terço</strong>, e é difícil notar diferença em uma foto.</li>
+    <li>Com qualidade 10, os <strong>blocos e manchas</strong> aparecem, principalmente na borda branca da xícara.</li>
+    <li>A cada novo salvamento, o JPEG <strong>comprime de novo</strong> e perde mais. Aumentar a qualidade depois não recupera o que se perdeu.</li>
+  </ul>
+  <p class="fonte">Livro, p. 81–82. Recortes de 240 × 180 pixels ampliados; pesos da foto inteira, medidos.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>PNG e transparência</h2>
+  <div class="comparar c3">
+    <figure><div class="fundo-cor"><img src="../assets/img/encontro-01/logo-png.png" alt="Logotipo em PNG sobre fundo bege, com bordas suaves"></div><figcaption><strong>PNG</strong><span class="peso">16,6 kB</span> transparência gradual: borda suave</figcaption></figure>
+    <figure><div class="fundo-cor"><img src="../assets/img/encontro-01/logo-jpg.png" alt="Logotipo em JPEG com quadrado branco ao redor e manchas perto das letras"></div><figcaption><strong>JPEG, qualidade 10</strong><span class="peso">4,0 kB</span> sem transparência: o quadrado branco do cliente</figcaption></figure>
+    <figure><div class="fundo-cor"><img src="../assets/img/encontro-01/logo-gif.png" alt="Logotipo em GIF sobre fundo bege, com bordas serrilhadas"></div><figcaption><strong>GIF</strong><span class="peso">5,7 kB</span> só opaco ou transparente: borda serrilhada</figcaption></figure>
+  </div>
+  <p>A <em class="termo">transparência</em> deixa o fundo da página aparecer através da imagem. O <strong>PNG</strong> tem até 256 níveis de transparência, por isso a borda fica suave sobre qualquer cor.</p>
+  <p>O PNG é sem perda, ideal para <strong>logotipos, ícones, botões e imagens com texto</strong>. Em fotos não compensa: a foto do balcão em PNG pesa 1.654 kB.</p>
+  <p class="fonte">Livro, p. 81–82. Pesos medidos nos arquivos do pacote.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>GIF: 256 cores e animação simples</h2>
+  <div class="duas estreita-larga">
+    <div class="comparar c2">
+      <figure><img class="pixels" src="../assets/img/encontro-01/fundo-original.png" alt="Trecho desfocado da foto com transição suave"><figcaption><strong>Original</strong></figcaption></figure>
+      <figure><img class="pixels" src="../assets/img/encontro-01/fundo-gif.png" alt="O mesmo trecho em GIF, com manchas na transição"><figcaption><strong>GIF</strong></figcaption></figure>
+    </div>
+    <div>
+      <p>O <em class="termo">GIF</em> guarda no máximo <strong>256 cores</strong> por imagem, contra os 16,7 milhões possíveis no RGB. A compressão é sem perda, mas uma foto precisa antes ser reduzida a 256 cores, e as demais se perdem.</p>
+      <p>Ele aceita <strong>animação</strong>, por isso é usado em animações simples, com poucas cores.</p>
+      <div class="caixa aviso">O GIF nem sempre é leve: a foto do balcão em GIF pesa <strong>892 kB</strong>, quase dez vezes o JPEG de qualidade 60, e com qualidade pior.</div>
+    </div>
+  </div>
+  <p class="fonte">Livro, p. 81–82. Medição nossa com o arquivo do pacote.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Qual formato para qual imagem?</h2>
+  <table>
+    <tr><th>A imagem é…</th><th>Use</th><th>Porque</th></tr>
+    <tr><td>Fotografia</td><td><strong>JPEG</strong></td><td>Muitas cores e transições suaves: compressão forte, em nível ajustável</td></tr>
+    <tr><td>Logotipo, ícone, botão, imagem com texto</td><td><strong>PNG</strong></td><td>Bordas nítidas, sem perda e com transparência</td></tr>
+    <tr><td>Poucas cores ou animação simples</td><td><strong>GIF</strong></td><td>Até 256 cores e permite animação</td></tr>
+    <tr><td>Arquivo em edição, ainda não terminado</td><td><strong>XCF ou PNG</strong></td><td>Não perde nada ao salvar de novo</td></tr>
+  </table>
+  <div class="duas">
+    <div class="caixa ideia"><strong>Dois arquivos, sempre:</strong> um para criar e editar, outro para publicar. Converter um arquivo já pobre para um formato "melhor" só aumenta o peso, sem melhorar a qualidade.</div>
+    <div class="caixa"><span class="rotulo">Você também vai encontrar</span><strong>WebP</strong>, formato moderno, em geral menor que JPEG e PNG, e <strong>SVG</strong>, o vetor da web.</div>
+  </div>
+  <p class="fonte">Livro, p. 80–82. WebP e SVG: MDN, guia de formatos de imagem.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Preparando uma imagem para a web</h2>
+  <div class="duas">
+    <div class="caixa">
+      <span class="rotulo">Mesma foto, ambas em JPEG de qualidade 60</span>
+      <p class="grande">1600 × 1068 <span class="peso">91 kB</span></p>
+      <p class="grande">800 × 534 <span class="peso">34 kB</span></p>
+      <p>A foto do site atual, com 5533 × 3694 pixels, pesa <span class="peso">2.133 kB</span> e aparece com só 860 pixels de largura.</p>
+    </div>
+    <div>
+      <p>Se a foto aparece em um espaço de 800 pixels, enviar mais do que isso faz o celular baixar pixels que ninguém vai ver.</p>
+      <ol>
+        <li>Defina o <strong>tamanho em que ela vai aparecer</strong> e reduza a resolução.</li>
+        <li>Escolha o <strong>formato</strong> pelo tipo de imagem.</li>
+        <li>Ajuste a <strong>qualidade</strong> até o limite aceitável.</li>
+      </ol>
+      <div class="caixa aviso">Arquivo muito grande compromete a <strong>acessibilidade e a fluidez</strong> da navegação. Peso também é questão de acesso.</div>
+    </div>
+  </div>
+  <p class="fonte">Livro, p. 81–82. Medições nossas. A ordem dos passos é sugestão nossa.</p>
+  
+</section>
+
+<section class="slide exercicio">
+  <h2>Laboratório de formatos: a foto</h2>
+  <div class="duas larga-estreita">
+    <ol>
+      <li>Baixe o <a href="../pacotes/pacote-encontro-01.zip">pacote do encontro 1</a> e extraia a pasta. Abra o <code>LEIA-ME.txt</code>.</li>
+      <li>Abra cada arquivo da pasta <code>foto</code> no navegador. Use <kbd>Ctrl</kbd> + roda do mouse para ampliar sempre o mesmo trecho, por exemplo a borda da xícara.</li>
+      <li>Para ver o peso: botão direito no arquivo → <strong>Propriedades</strong> → Tamanho, em bytes.</li>
+      <li>Copie a tabela no caderno e preencha.</li>
+      <li>Decida qual versão você publicaria como foto de destaque e justifique com o peso e com o que viu.</li>
+    </ol>
+    <table>
+      <tr><th>Arquivo</th><th>Bytes</th><th>Defeito visível?</th></tr>
+      <tr><td>foto-original.png</td><td></td><td></td></tr>
+      <tr><td>foto-q90.jpg</td><td></td><td></td></tr>
+      <tr><td>foto-q60.jpg</td><td></td><td></td></tr>
+      <tr><td>foto-q30.jpg</td><td></td><td></td></tr>
+      <tr><td>foto-q10.jpg</td><td></td><td></td></tr>
+      <tr><td>foto-256cores.gif</td><td></td><td></td></tr>
+      <tr><td>foto-800px-q60.jpg</td><td></td><td></td></tr>
+    </table>
+  </div>
+  <p><span class="timer" data-min="30"></span></p>
+  <p class="fonte">A resposta aparece aqui depois do próximo encontro.</p>
+  
+</section>
+
+<section class="slide exercicio">
+  <h2>Laboratório de formatos: o logotipo</h2>
+  <ol>
+    <li>Abra no navegador, da pasta <code>logo</code>, os arquivos <code>logo.png</code>, <code>logo-q60.jpg</code>, <code>logo-q10.jpg</code>, <code>logo.gif</code> e <code>logo-vetorial.svg</code>.</li>
+    <li>Amplie até 500% com <kbd>Ctrl</kbd> + roda do mouse. Observe bordas e letras: onde aparecem manchas? E serrilhado?</li>
+    <li>Faça o mesmo com <code>logo-120px.png</code> e compare com <code>logo-vetorial.svg</code>. O que muda ao ampliar? Por quê?</li>
+    <li>Anote o peso de cada arquivo e responda:
+      <ul>
+        <li>Qual arquivo você usaria no topo de um site com fundo colorido?</li>
+        <li>Entre os arquivos com 600 pixels de largura, <code>logo-q10.jpg</code> é o bitmap mais leve. Por que não é a melhor escolha?</li>
+      </ul>
+    </li>
+  </ol>
+  <p><span class="timer" data-min="20"></span></p>
+  <p class="fonte">A resposta aparece aqui depois do próximo encontro.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Interação humano-computador</h2>
+  <div class="duas">
+    <div>
+      <p>Você já ficou irritado com um caixa eletrônico, um controle remoto ou um site que não fazia o que você queria? Muitos produtos cumprem a função, mas <strong>não foram projetados com foco no usuário</strong>.</p>
+      <p>A <em class="termo">interação humano-computador</em> estuda essa relação. Três critérios ajudam a avaliar uma interface:</p>
+      <ul>
+        <li><strong>Ergonomia:</strong> é confortável, sem esforço desnecessário?</li>
+        <li><strong>Usabilidade:</strong> dá para cumprir a tarefa bem?</li>
+        <li><strong>Acessibilidade:</strong> todos conseguem chegar à informação?</li>
+      </ul>
+    </div>
+    <div class="caixa ideia">
+      <span class="rotulo">Interface</span>
+      <p>É o meio pelo qual a pessoa usa o sistema: botões, tela de toque, voz. Tem <strong>entradas</strong>, pelas quais o usuário age, e <strong>saídas</strong>, pelas quais o sistema responde.</p>
+      <p>O jeito como ela é projetada muda como as pessoas percebem, aprendem e lembram de realizar as tarefas.</p>
+    </div>
+  </div>
+  <p class="fonte">Livro, p. 25 e 28. O plano e o livro também usam o nome "interação homem-máquina".</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Ergonomia</h2>
+  <div class="duas">
+    <div>
+      <p><em class="termo">Ergonomia</em> é o conjunto de medidas para adaptar um produto ou sistema às necessidades do usuário, visando <strong>bem-estar, facilidade de aprendizado</strong> e menos esforço desnecessário.</p>
+      <p>Na web, a pergunta é: o site <strong>cansa ou atrapalha</strong> quem está usando?</p>
+    </div>
+    <table>
+      <tr><th>Ergonomia ruim</th><th>Boa ergonomia</th></tr>
+      <tr><td>Janelas que precisam ser fechadas antes de ler</td><td>O conteúdo aparece logo</td></tr>
+      <tr><td>Banners chamativos disputando a atenção</td><td>Destaque para o que importa</td></tr>
+      <tr><td>Procurar o cardápio no meio da propaganda</td><td>Menu claro, com "Cardápio" à vista</td></tr>
+    </table>
+  </div>
+  <p class="fonte">Livro, p. 25–26.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Usabilidade: cinco fatores</h2>
+  <table>
+    <tr><th>Fator</th><th>A pergunta</th><th>Exemplo de falha</th></tr>
+    <tr><td><strong>Eficácia</strong></td><td>O sistema cumpre bem a tarefa para a qual foi feito?</td><td>O cardápio não mostra os preços</td></tr>
+    <tr><td><strong>Eficiência</strong></td><td>Há uma sequência lógica até concluir a tarefa?</td><td>Sete cliques para achar o telefone</td></tr>
+    <tr><td><strong>Segurança</strong></td><td>Os dados são protegidos? E quando algo falha?</td><td>O pedido é enviado sem conexão segura</td></tr>
+    <tr><td><strong>Utilidade</strong></td><td>As funções bastam para o que o usuário quer?</td><td>Precisa ir a outra rede social para saber o horário</td></tr>
+    <tr><td><strong>Aprendizagem</strong></td><td>Dá para aprender a usar sozinho?</td><td>Ícones sem nome, que ninguém entende</td></tr>
+  </table>
+  <div class="caixa ideia">Para testar, use a interface <strong>como se fosse um novo usuário</strong>: faça operações fora de ordem e coloque letras em um campo de números.</div>
+  <p class="fonte">Livro, p. 26–27 e 29. Exemplos de falha: nossos.</p>
+</section>
+
+<section class="slide">
+  <h2>Acessibilidade</h2>
+  <p><em class="termo">Acessibilidade</em> é a facilidade de chegar à informação. Envolve o aparelho, a conexão e a forma de usar o site, e inclui pessoas com restrições.</p>
+  <table>
+    <tr><th>Restrição</th><th>O que acontece</th><th>Como verificar em um site</th></tr>
+    <tr><td><strong>Motora</strong></td><td>Não consegue usar mouse ou outro dispositivo</td><td>Navegue só com <kbd>Tab</kbd> e <kbd>Enter</kbd>. Chega em tudo? Dá para ver onde está?</td></tr>
+    <tr><td><strong>Visual</strong></td><td>Não consegue ver a tela, ou vê com dificuldade</td><td>Amplie para 200% com <kbd>Ctrl</kbd> + <kbd>+</kbd>. Continua legível e usável?</td></tr>
+    <tr><td><strong>Auditiva</strong></td><td>Não ouve os sons do sistema</td><td>Sem som, um vídeo do site ainda passa a mensagem?</td></tr>
+    <tr><td><strong>Conexão</strong></td><td>Internet lenta ou aparelho simples</td><td>Meça o peso das imagens, como no próximo slide</td></tr>
+  </table>
+  <div class="caixa aviso">Terceira queixa do cliente: "não conseguiu chegar ao cardápio pelo teclado". Você vai testar isso no site dele.</div>
+  <p class="fonte">Livro, p. 27 e 81. Os testes com teclado e zoom são sugestão nossa.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Medindo o site da Grão da Esquina</h2>
+  <div class="duas larga-estreita">
+    <div>
+      <p>Abra o <a href="../pratica/encontro-01/site-grao/index.html">site atual da Grão da Esquina</a>, o mesmo das queixas do cliente. Ele também está na pasta <code>site-grao</code> do pacote. É um site fictício, montado com problemas de propósito.</p>
+      <ol>
+        <li>Aperte <kbd>F12</kbd> para abrir as ferramentas do desenvolvedor.</li>
+        <li>Vá à aba <strong>Rede</strong> (<em>Network</em>) e filtre por <strong>Img</strong>.</li>
+        <li>Aperte <kbd>Ctrl</kbd> + <kbd>F5</kbd> para recarregar a página sem a memória do navegador.</li>
+        <li>Veja a coluna <strong>Tamanho</strong> (<em>Size</em>) de cada imagem.</li>
+        <li>Passe o mouse sobre o nome do arquivo para ver a imagem e sua resolução.</li>
+      </ol>
+    </div>
+    <div class="caixa ideia">
+      <span class="rotulo">O que observar</span>
+      <p>Qual é a <strong>maior imagem</strong>? Qual o formato e a resolução dela?</p>
+      <p>Compare com o <strong>tamanho em que ela aparece</strong> na página. A diferença é o desperdício.</p>
+    </div>
+  </div>
+  <p class="fonte">Procedimento nosso, nas ferramentas do Chrome e do Edge. O Firefox é parecido.</p>
+  
+</section>
+
+<section class="slide exercicio">
+  <h2>Análise do site da Grão da Esquina</h2>
+  <p>Use o <a href="../pratica/encontro-01/site-grao/index.html">site atual da Grão da Esquina</a> como um <strong>novo usuário</strong>. Registre no caderno o que encontrar:</p>
+  <table>
+    <tr><th>Item</th><th>O que fazer</th></tr>
+    <tr><td><strong>Peso</strong></td><td>Meça a maior imagem: formato, bytes e resolução. Ela aparece em que tamanho?</td></tr>
+    <tr><td><strong>Formato</strong></td><td>Observe o logotipo sobre a faixa marrom. O formato é adequado?</td></tr>
+    <tr><td><strong>Ergonomia</strong></td><td>O que atrapalha ou cansa ao entrar no site?</td></tr>
+    <tr><td><strong>Usabilidade</strong></td><td>Tente descobrir o preço de um cappuccino, o horário e o telefone. Qual fator falhou em cada caso?</td></tr>
+    <tr><td><strong>Acessibilidade</strong></td><td>Recarregue a página e tente chegar ao cardápio só com o teclado. Depois, amplie para 200%.</td></tr>
+  </table>
+  <p>Este registro é a base da <strong>Parte D da Lista 1</strong>.</p>
+  <p><span class="timer" data-min="40"></span></p>
+  
+</section>
+
+<section class="slide exercicio">
+  <h2>Lista 1: a entrega deste encontro</h2>
+  <div class="duas">
+    <div>
+      <p>Abra a <a href="../listas/lista-01.html">Lista 1</a> e comece agora. O que não terminar, conclua em casa: ela não exige nenhum programa instalado.</p>
+      <ul>
+        <li><strong>Parte A:</strong> imagem digital e cálculos.</li>
+        <li><strong>Parte B:</strong> decisões de formato.</li>
+        <li><strong>Parte C:</strong> avaliando a interface.</li>
+        <li><strong>Parte D:</strong> o site da Grão da Esquina.</li>
+      </ul>
+    </div>
+    <div class="caixa">
+      <span class="rotulo">Para entregar</span>
+      <p>Responda em um documento ou no papel, conforme o professor orientar, e entregue pelo canal indicado.</p>
+      <p>Use o <a href="../reference/glossario.html">glossário</a> para revisar os termos.</p>
+    </div>
+  </div>
+  <p><span class="timer" data-min="32"></span></p>
+  
+</section>
+
+<section class="slide">
+  <h2>Antes de sair: salve o seu trabalho</h2>
+  <div class="duas">
+    <div class="caixa aviso">
+      <span class="rotulo">Atenção</span>
+      <p class="grande">Estas máquinas voltam ao estado original quando reiniciam.</p>
+      <p>Tudo o que ficar só neste computador, inclusive em Downloads e na Área de Trabalho, será perdido.</p>
+    </div>
+    <ol>
+      <li>Crie, na sua nuvem, a pasta <strong>UC07-seu-nome</strong>.</li>
+      <li>Envie para ela suas respostas da lista e as anotações do dia.</li>
+      <li>Abra a pasta em outra aba e <strong>confira</strong> se os arquivos estão lá.</li>
+      <li>Se tiver pendrive, faça também uma cópia.</li>
+    </ol>
+  </div>
+  <p><span class="timer" data-min="10"></span></p>
+  
+</section>
+
+<section class="slide">
+  <h2>Para fechar</h2>
+  <div class="duas">
+    <div>
+      <p>Volte às queixas do cliente. Agora você sabe a causa de cada uma:</p>
+      <table>
+        <tr><th>Queixa</th><th>Causa</th><th>Solução</th></tr>
+        <tr><td>Demora para abrir</td><td>Foto de 5533 × 3694, com 2,1 MB</td><td>Reduzir a resolução e usar JPEG</td></tr>
+        <tr><td>Quadrado branco</td><td>JPEG não tem transparência</td><td>Usar PNG</td></tr>
+        <tr><td>Sem teclado</td><td>Menu e janela só respondem ao mouse</td><td>Testar e corrigir a navegação</td></tr>
+      </table>
+    </div>
+    <div class="caixa">
+      <span class="rotulo">Até o próximo encontro</span>
+      <p>Entregue a <a href="../listas/lista-01.html">Lista 1</a>.</p>
+      <p><strong>Leitura:</strong> livro, p. 25–32 e 80–82.</p>
+      <p>No encontro 2, a foto do balcão será recortada e tratada em um editor de imagens.</p>
+    </div>
+  </div>
+  
+</section>
+
+</body>
+</html>

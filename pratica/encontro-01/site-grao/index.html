@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Grão da Esquina — Cafeteria</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="pagina">
+  <div class="topo">
+    <img src="logo.jpg" width="300" alt="Grão da Esquina">
+    <div class="menu">
+      <div class="item" onclick="location.hash='inicio'">Início</div>
+      <div class="item" onclick="location.hash='cardapio'">Cardápio</div>
+      <div class="item" onclick="location.hash='sobre'">Sobre</div>
+      <div class="item" onclick="location.hash='contato'">Contato</div>
+    </div>
+  </div>
+
+  <div class="faixa-promo">PEÇA JÁ!!! 50% OFF NO SEGUNDO CAFÉ * CADASTRE-SE * BAIXE NOSSO APP * PEÇA JÁ!!!</div>
+
+  <div id="inicio" class="destaque">
+    <img src="foto-balcao.jpg" width="1100" alt="Foto">
+    <p class="claro">Bem-vindo à Grão da Esquina, o café do seu bairro desde 2009. Grãos selecionados, torra artesanal e um ambiente acolhedor para começar bem o dia ou fazer uma pausa à tarde.</p>
+  </div>
+
+  <div class="lateral">
+    <div class="anuncio">CADASTRE-SE E GANHE UM CUPOM!</div>
+    <div class="anuncio">BAIXE O APP!</div>
+    <div class="anuncio">SIGA NO INSTAGRAM!</div>
+  </div>
+
+  <div id="cardapio" class="bloco">
+    <h2>Cardápio</h2>
+    <ul>
+      <li>Espresso</li>
+      <li>Cappuccino</li>
+      <li>Café coado</li>
+      <li>Pão de queijo</li>
+      <li>Bolo do dia</li>
+    </ul>
+  </div>
+
+  <div id="sobre" class="bloco">
+    <h2>Sobre</h2>
+    <p class="claro">Horários de funcionamento: consulte nosso Instagram.</p>
+  </div>
+
+  <div id="contato" class="bloco">
+    <h2>Contato</h2>
+    <div class="icones">
+      <div class="icone" onclick="alert('(11) 5555-0000')">☎</div>
+      <div class="icone" onclick="alert('contato@graodaesquina.exemplo')">✉</div>
+      <div class="icone" onclick="alert('Rua das Flores, 120')">⌖</div>
+    </div>
+  </div>
+
+  <p class="rodape">Site fictício, criado para a UC07 com problemas de propósito. Foto: Chevanon Photography, CC0, via Wikimedia Commons.</p>
+</div>
+
+<div class="janela" id="janela">
+  <div class="caixa">
+    <div class="x" onclick="document.getElementById('janela').remove()">×</div>
+    <h2>PROMOÇÃO IMPERDÍVEL!</h2>
+    <p>Cadastre seu e-mail e concorra a um ano de café grátis!</p>
+    <div class="botao">QUERO PARTICIPAR</div>
+  </div>
+</div>
+</body>
+</html>

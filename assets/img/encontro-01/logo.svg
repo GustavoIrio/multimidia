@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" width="600" height="220" role="img" aria-label="Logotipo da cafeteria Grão da Esquina">
+  <g fill="none" stroke="#4a2c17" stroke-width="9" stroke-linecap="round">
+    <path d="M66 42c-10 12 10 20 0 32"/>
+    <path d="M100 30c-10 14 10 26 0 44"/>
+    <path d="M134 42c-10 12 10 20 0 32"/>
+    <path d="M176 118h20a24 24 0 0 1 0 48h-30"/>
+  </g>
+  <path d="M34 92h142v62a44 44 0 0 1-44 44H78a44 44 0 0 1-44-44z" fill="#b9501a" stroke="#4a2c17" stroke-width="9"/>
+  <ellipse cx="105" cy="142" rx="20" ry="30" transform="rotate(24 105 142)" fill="#fbeee3"/>
+  <path d="M116 116c-14 16-8 34-22 52" fill="none" stroke="#b9501a" stroke-width="6"/>
+  <text x="238" y="112" font-family="Georgia, 'DejaVu Serif', serif" font-size="62" font-weight="700" fill="#4a2c17">Grão</text>
+  <text x="238" y="176" font-family="Georgia, 'DejaVu Serif', serif" font-size="46" fill="#b9501a">da Esquina</text>
+</svg>
