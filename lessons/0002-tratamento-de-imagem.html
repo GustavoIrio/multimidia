@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Encontro 2 — Tratamento de imagem</title>
+<link rel="stylesheet" href="../assets/curso.css">
+<script src="../assets/curso.js" defer></script>
+</head>
+<body class="deck">
+
+<section class="slide capa">
+  <span class="rotulo">UC07 · Criação e Editoração de Multimídia · Encontro 2 de 4</span>
+  <h1>Tratamento de imagem</h1>
+  <p class="sub">Enquadrar, corrigir a luz, recortar um objeto e limpar defeitos, sem estragar o original</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Antes de começar: o que ficou do encontro 1?</h2>
+  <div class="quiz">
+    <p class="pergunta">1. Uma foto de 1200 × 800 pixels, sem compressão, com 3 bytes por pixel, pesa…</p>
+    <ol>
+      <li>960 kB</li>
+      <li data-certa>2.880 kB, ou cerca de 2,9 MB</li>
+      <li>3.600 kB</li>
+    </ol>
+    <div class="explica">1200 × 800 = 960.000 pixels; × 3 bytes = 2.880.000 bytes.</div>
+  </div>
+  <div class="quiz">
+    <p class="pergunta">2. Logotipo sobre uma faixa colorida do site. Qual formato?</p>
+    <ol>
+      <li>JPEG</li>
+      <li data-certa>PNG</li>
+      <li>BMP</li>
+    </ol>
+    <div class="explica">PNG: sem perda e com transparência. O JPEG deixaria o quadrado branco.</div>
+  </div>
+  <div class="quiz">
+    <p class="pergunta">3. No caderno, sem olhar: por que reduzir a resolução de uma foto antes de publicar?</p>
+    <ol>
+      <li data-certa>Conferir a resposta</li>
+    </ol>
+    <div class="explica">Para não enviar pixels que não serão vistos: o peso cai muito, porque metade da largura e da altura dá um quarto dos pixels.</div>
+  </div>
+  
+</section>
+
+<section class="slide">
+  <h2>O pedido da Grão da Esquina</h2>
+  <div class="duas larga-estreita">
+    <div>
+      <div class="caixa">
+        <p>"Gostei do diagnóstico. Agora preciso das imagens prontas: a foto do balcão saiu escura e grande demais para o banner do site. Quero a xícara do cardápio sem o fundo, para colocar sobre qualquer cor. E apareceram umas manchas na mesa da outra foto."</p>
+      </div>
+      <p>São três trabalhos típicos de <strong>tratamento de imagem</strong>:</p>
+      <ol>
+        <li><strong>Banner:</strong> enquadrar, corrigir a luz, reduzir e exportar.</li>
+        <li><strong>Xícara:</strong> selecionar o objeto e deixar o fundo transparente.</li>
+        <li><strong>Mesa:</strong> apagar as manchas sem deixar marca.</li>
+      </ol>
+    </div>
+    <figure class="figura">
+      <img src="../assets/img/encontro-02/niveis-antes.jpg" alt="Foto do balcão muito escura">
+      <figcaption>A foto do balcão, como chegou do cliente.</figcaption>
+    </figure>
+  </div>
+  
+</section>
+
+<section class="slide secao">
+  <h2>O editor de imagens</h2>
+  <p>GIMP, camadas e canais</p>
+</section>
+
+<section class="slide">
+  <h2>GIMP: o editor que vamos usar</h2>
+  <div class="duas">
+    <div>
+      <p>O <em class="termo">GIMP</em> (<em>GNU Image Manipulation Program</em>) é um editor de imagens para retocar fotos, compor e criar imagens, e converter formatos.</p>
+      <ul>
+        <li><strong>Software livre</strong>, sob a licença GPL: pode ser usado, estudado e alterado sem custo.</li>
+        <li><strong>Multiplataforma:</strong> funciona em Windows, Linux e macOS. Você pode instalá-lo em casa.</li>
+        <li>Trabalha com <strong>camadas, transparência e vários níveis de desfazer</strong>, e abre e salva muitos formatos.</li>
+      </ul>
+      <p>O mais conhecido no mercado é o Photoshop, da Adobe. Os conceitos desta aula valem para os dois: muda o lugar dos botões, não a ideia.</p>
+    </div>
+    <div class="caixa ideia">
+      <span class="rotulo">Três atalhos para hoje</span>
+      <p><kbd>Ctrl</kbd> + <kbd>Z</kbd> desfaz a última ação. O painel <strong>Histórico do desfazer</strong> mostra todas e permite voltar a qualquer uma.</p>
+      <p><kbd>Tab</kbd> esconde e mostra os painéis.</p>
+      <p>Parar o mouse sobre uma ferramenta mostra para que ela serve.</p>
+    </div>
+  </div>
+  <p class="fonte">Livro, p. 40, 43, 45 e 46.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>A janela do GIMP</h2>
+  <div class="duas larga-estreita">
+    <figure class="figura">
+      <img src="../assets/img/encontro-02/interface-gimp.svg" alt="Esquema da janela do GIMP com seis áreas numeradas">
+      <figcaption>Esquema da janela única. Desenho nosso, baseado no livro.</figcaption>
+    </figure>
+    <ol>
+      <li><strong>Barra de menu:</strong> todos os comandos.</li>
+      <li><strong>Caixa de ferramentas:</strong> seleção, pintura, transformação.</li>
+      <li><strong>Opções da ferramenta</strong> escolhida. Quase tudo se ajusta aqui.</li>
+      <li><strong>Janela de imagem:</strong> onde você edita. Cada imagem aberta vira uma aba.</li>
+      <li><strong>Camadas, canais, vetores e histórico</strong> do desfazer.</li>
+      <li><strong>Pincéis, texturas e degradês.</strong></li>
+    </ol>
+  </div>
+  <p class="fonte">Livro, p. 43–46. Janelas soltas? Use Janelas → Modo de janela única.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Camadas: folhas transparentes empilhadas</h2>
+  <div class="duas">
+    <div>
+      <p>Uma imagem pode ser feita de várias <em class="termo">camadas</em>, como folhas de papel transparente empilhadas. Cada uma guarda uma parte: a foto, a faixa, o logotipo.</p>
+      <ul>
+        <li>Onde a camada é transparente, aparece o que está embaixo.</li>
+        <li>Cada camada pode ser movida, editada ou apagada <strong>sem mexer nas outras</strong>.</li>
+        <li>A <strong>ordem</strong> importa: a camada de cima cobre as de baixo.</li>
+        <li>Cada camada pode ter um tamanho diferente.</li>
+      </ul>
+    </div>
+    <div class="comparar c2">
+      <figure><img src="../assets/img/encontro-02/camadas-pilha.jpg" alt="Três camadas deslocadas: a foto no fundo, uma faixa marrom no meio e o logotipo em cima"><figcaption><strong>As três camadas</strong>o xadrez é transparente</figcaption></figure>
+      <figure><img src="../assets/img/encontro-02/camadas-resultado.jpg" alt="Resultado: a foto com a faixa e o logotipo"><figcaption><strong>O resultado</strong>visto de frente</figcaption></figure>
+    </div>
+  </div>
+  <p class="fonte">Livro, p. 41–42 e 45. Figuras nossas.</p>
+</section>
+
+<section class="slide">
+  <h2>Canais de cor e o canal alfa</h2>
+  <div class="comparar c4">
+    <figure><img src="../assets/img/encontro-02/canal-r.png" alt="Canal vermelho em tons de cinza"><figcaption><strong>Vermelho (R)</strong></figcaption></figure>
+    <figure><img src="../assets/img/encontro-02/canal-g.png" alt="Canal verde em tons de cinza"><figcaption><strong>Verde (G)</strong></figcaption></figure>
+    <figure><img src="../assets/img/encontro-02/canal-b.png" alt="Canal azul em tons de cinza"><figcaption><strong>Azul (B)</strong></figcaption></figure>
+    <figure><img src="../assets/img/encontro-02/canal-alfa.png" alt="Canal alfa do logotipo: branco onde é opaco, preto onde é transparente"><figcaption><strong>Alfa do logotipo</strong></figcaption></figure>
+  </div>
+  <p>Cada pixel tem uma cor formada por <strong>canais</strong>. Cada canal guarda a intensidade de uma cor, de 0 a 255, e por isso aparece em tons de cinza: claro onde a cor é forte, escuro onde é fraca.</p>
+  <p>O quarto canal, o <em class="termo">alfa</em>, guarda a <strong>transparência</strong>: branco é opaco, preto é transparente. Uma camada <strong>sem canal alfa</strong> não fica transparente: ao apagar, ela é pintada com a cor de fundo.</p>
+  <p class="fonte">Livro, p. 43 e 66. Figuras nossas.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Salvar ou exportar?</h2>
+  <div class="duas">
+    <div class="caixa certo">
+      <span class="rotulo">Arquivo → Salvar · Ctrl + S</span>
+      <p>Grava no formato do GIMP, o <strong>XCF</strong>, com camadas, canais e vetores. É o arquivo de <strong>trabalho</strong>: dá para abrir amanhã e continuar editando.</p>
+      <p>Navegadores não exibem XCF.</p>
+    </div>
+    <div class="caixa ideia">
+      <span class="rotulo">Arquivo → Exportar como · Shift + Ctrl + E</span>
+      <p>Gera uma <strong>cópia</strong> em JPEG, PNG ou outro formato, com as camadas juntas em uma só. É o arquivo para <strong>publicar</strong>.</p>
+      <p>O formato vem da extensão que você digita: <code>banner.jpg</code> ou <code>xicara.png</code>.</p>
+    </div>
+  </div>
+  <div class="caixa aviso">É a regra dos <strong>dois arquivos</strong> do encontro 1: o XCF para editar, o JPEG ou PNG para o site. Os dois vão para a sua nuvem.</div>
+  <p class="fonte">Livro, p. 80–82.</p>
+  
+</section>
+
+<section class="slide secao">
+  <h2>Enquadrar e redimensionar</h2>
+  <p>Do tamanho da câmera ao tamanho do site</p>
+</section>
+
+<section class="slide">
+  <h2>Cortar: ficar só com o que importa</h2>
+  <div class="duas">
+    <figure class="figura">
+      <img src="../assets/img/encontro-02/cortar-21.jpg" alt="Foto do balcão com um retângulo amarelo de proporção 2 por 1 e o resto escurecido">
+      <figcaption>Área mantida em amarelo, com proporção 2 : 1. O escurecido será descartado.</figcaption>
+    </figure>
+    <div>
+      <p>A ferramenta <strong>Cortar</strong> (<kbd>Shift</kbd> + <kbd>C</kbd>) remove tudo o que fica fora do retângulo que você desenha. Ajuste-o e aperte <kbd>Enter</kbd>.</p>
+      <p>Um banner costuma ser bem mais largo que alto. Nas opções, marque <strong>Fixo: Proporção</strong> e digite <strong>2:1</strong>: a largura será sempre o dobro da altura.</p>
+      <div class="caixa ideia">
+        <span class="rotulo">A conta</span>
+        <p>Foto com 2400 de largura, em proporção 2 : 1 → altura de 2400 ÷ 2 = <strong>1200 pixels</strong>.</p>
+      </div>
+      <p>Cortar também <strong>reduz o peso</strong>, porque os pixels descartados deixam de existir.</p>
+    </div>
+  </div>
+  <p class="fonte">Livro, p. 71. Opção "Fixo: Proporção" e atalho: manual do GIMP. A proporção 2 : 1 é escolha nossa para o banner.</p>
+</section>
+
+<section class="slide">
+  <h2>Redimensionar a imagem inteira</h2>
+  <div class="duas">
+    <div>
+      <p><strong>Imagem → Redimensionar imagem</strong> muda a resolução da imagem toda: a quantidade de pixels.</p>
+      <ul>
+        <li>Com a <strong>corrente unida</strong> ao lado de largura e altura, mudar uma muda a outra na mesma proporção. Com a corrente separada, a imagem <strong>distorce</strong>.</li>
+        <li>Também dá para usar <strong>porcentagem</strong>: 50% de cada lado.</li>
+        <li>A <strong>interpolação</strong> decide como calcular os novos pixels.</li>
+      </ul>
+      <div class="caixa ideia">2400 × 1200 → largura <strong>1600</strong> com a corrente unida → altura <strong>800</strong> (1600 ÷ 2).</div>
+    </div>
+    <table>
+      <tr><th>Interpolação</th><th>Como calcula o novo pixel</th></tr>
+      <tr><td>Nenhuma</td><td>Copia o vizinho mais próximo. Rápido, mas serrilha.</td></tr>
+      <tr><td>Linear</td><td>Mistura os 4 vizinhos mais próximos.</td></tr>
+      <tr><td>Cúbica</td><td>Mistura os 8 vizinhos mais próximos. Em geral, melhor.</td></tr>
+      <tr><td>NoHalo, LoHalo</td><td>Métodos de alta qualidade. O NoHalo serve para reduzir muito.</td></tr>
+    </table>
+  </div>
+  <p class="fonte">Livro, p. 69–70 e 73. Nomes do menu e métodos NoHalo e LoHalo: GIMP atual e seu manual.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Girar, espelhar e outras transformações</h2>
+  <table>
+    <tr><th>Ferramenta</th><th>Para quê</th><th>Exemplo</th></tr>
+    <tr><td><strong>Rotacionar</strong></td><td>Girar uma camada ou seleção. Com <kbd>Ctrl</kbd>, em passos de 15°.</td><td>Endireitar uma foto tirada torta</td></tr>
+    <tr><td><strong>Espelhar</strong></td><td>Inverter na horizontal ou na vertical</td><td>Fazer a pessoa da foto olhar para o texto</td></tr>
+    <tr><td><strong>Mover</strong></td><td>Mover camada, seleção ou vetor, escolhido nas opções</td><td>Posicionar o logotipo no banner</td></tr>
+    <tr><td><strong>Alinhar</strong></td><td>Alinhar camadas entre si ou à imagem</td><td>Centralizar um texto</td></tr>
+    <tr><td><strong>Perspectiva</strong></td><td>Deformar movendo os quatro cantos</td><td>Corrigir uma placa fotografada de lado</td></tr>
+  </table>
+  <div class="caixa aviso">Toda transformação recalcula pixels, por interpolação. Transformar a mesma imagem muitas vezes vai acumulando perda: planeje e faça de uma vez.</div>
+  <p class="fonte">Livro, p. 69–75. Exemplos e o aviso: nossos.</p>
+</section>
+
+<section class="slide secao">
+  <h2>Corrigir luz e cor</h2>
+  <p>Menu Cores</p>
+</section>
+
+<section class="slide">
+  <h2>Brilho e contraste</h2>
+  <div class="comparar c3">
+    <figure><img src="../assets/img/encontro-02/bc-original.jpg" alt="Foto do balcão original"><figcaption><strong>Original</strong></figcaption></figure>
+    <figure><img src="../assets/img/encontro-02/bc-brilho.jpg" alt="Mesma foto com mais brilho, acinzentada"><figcaption><strong>Mais brilho</strong>tudo mais claro, inclusive o preto</figcaption></figure>
+    <figure><img src="../assets/img/encontro-02/bc-contraste.jpg" alt="Mesma foto com mais contraste, escuros mais escuros e claros mais claros"><figcaption><strong>Mais contraste</strong>claros e escuros se afastam</figcaption></figure>
+  </div>
+  <ul>
+    <li><em class="termo">Brilho</em> é a claridade da imagem: soma o mesmo valor a todos os pixels.</li>
+    <li><em class="termo">Contraste</em> é a diferença entre as regiões claras e escuras.</li>
+    <li><strong>Cores → Brilho e contraste</strong> é rápido, mas aplica o mesmo ajuste a toda a imagem. Para ajustes finos, use <strong>Níveis</strong> e <strong>Curvas</strong>.</li>
+  </ul>
+  <p class="fonte">Livro, p. 77. Figuras nossas.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>O gráfico da janela de Níveis</h2>
+  <div class="duas">
+    <div>
+      <p>A janela <strong>Cores → Níveis</strong> mostra um gráfico da imagem:</p>
+      <ul>
+        <li>na horizontal, os <strong>tons</strong>, de 0 (preto) a 255 (branco);</li>
+        <li>na vertical, <strong>quantos pixels</strong> têm cada tom.</li>
+      </ul>
+      <p>Na foto escura, quase tudo se amontoa à esquerda, e a parte direita está vazia: <strong>não há tons claros</strong>. Uma foto equilibrada espalha os tons pela faixa toda.</p>
+    </div>
+    <div>
+      <figure class="figura">
+        <img src="../assets/img/encontro-02/niveis-grafico-antes.png" alt="Gráfico com quase todos os pixels concentrados nos tons escuros">
+        <figcaption><strong>Foto escura:</strong> pixels concentrados à esquerda.</figcaption>
+      </figure>
+      <figure class="figura">
+        <img src="../assets/img/encontro-02/niveis-grafico-original.png" alt="Gráfico com tons mais espalhados">
+        <figcaption><strong>Foto original:</strong> tons mais espalhados.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <p class="fonte">Livro, p. 78 ("caixa gráfica"). Leitura do gráfico: manual do GIMP, ferramenta Níveis. Gráficos nossos.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Níveis: os três triângulos</h2>
+  <div class="duas">
+    <div>
+      <table>
+        <tr><th>Triângulo</th><th>O que faz</th><th class="num">Nesta foto</th></tr>
+        <tr><td><strong>Preto</strong></td><td>Tons iguais ou abaixo dele viram preto</td><td class="num">0</td></tr>
+        <tr><td><strong>Cinza</strong></td><td>Tons médios: para a esquerda clareia, para a direita escurece</td><td class="num">gama 1,80</td></tr>
+        <tr><td><strong>Branco</strong></td><td>Tons iguais ou acima dele viram branco</td><td class="num">154</td></tr>
+      </table>
+      <p>Levar o triângulo branco até onde o gráfico <strong>termina</strong> (154) faz o tom mais claro da foto virar branco, e o resto se espalha. Depois, o cinza ajusta os tons médios.</p>
+      <p>Os <strong>níveis de saída</strong> fazem o contrário: apertam a faixa e reduzem o contraste.</p>
+    </div>
+    <div class="comparar c2">
+      <figure><img src="../assets/img/encontro-02/niveis-antes.jpg" alt="Foto escura antes do ajuste"><figcaption><strong>Antes</strong></figcaption></figure>
+      <figure><img src="../assets/img/encontro-02/niveis-depois.jpg" alt="Foto corrigida, com tons claros e escuros"><figcaption><strong>Depois</strong>branco 154, gama 1,80</figcaption></figure>
+    </div>
+  </div>
+  <p class="fonte">Livro, p. 78. Funções dos triângulos: manual do GIMP. Valores medidos por nós na foto do pacote.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Curvas: o ajuste mais completo</h2>
+  <div class="duas">
+    <div>
+      <p><strong>Cores → Curvas</strong> mostra uma linha que relaciona o tom de <strong>entrada</strong> (horizontal) ao tom de <strong>saída</strong> (vertical).</p>
+      <ul>
+        <li>A linha <strong>diagonal reta</strong> não muda nada: cada tom sai igual.</li>
+        <li>Clique na linha para criar uma <strong>âncora</strong> e arraste: <strong>para cima clareia</strong>, para baixo escurece aqueles tons.</li>
+        <li>Mover as pontas funciona como os triângulos preto e branco dos Níveis.</li>
+      </ul>
+      <p>Nesta curva, o tom 90 passou a 150: os tons escuros e médios clarearam, e os extremos ficaram no lugar.</p>
+    </div>
+    <div class="comparar c2">
+      <figure><img src="../assets/img/encontro-02/curva-grafico.png" alt="Gráfico com a diagonal e uma curva levantada por uma âncora"><figcaption><strong>Curva</strong> com âncora em (90, 150)</figcaption></figure>
+      <figure><img src="../assets/img/encontro-02/curva-depois.jpg" alt="Foto escura clareada pela curva"><figcaption><strong>Resultado</strong></figcaption></figure>
+    </div>
+  </div>
+  <p class="fonte">Livro, p. 79. Figuras nossas.</p>
+</section>
+
+<section class="slide">
+  <h2>Outras ferramentas do menu Cores</h2>
+  <table>
+    <tr><th>Ferramenta</th><th>O que faz</th></tr>
+    <tr><td><strong>Equilíbrio de cores</strong></td><td>Puxa as cores entre ciano e vermelho, magenta e verde, amarelo e azul. Corrige foto "amarelada" ou "azulada".</td></tr>
+    <tr><td><strong>Matiz-saturação</strong></td><td>Matiz troca a cor; luminosidade clareia ou escurece; saturação deixa a cor mais viva ou mais cinza.</td></tr>
+    <tr><td><strong>Colorizar</strong></td><td>Pinta a imagem toda com um só tom, como o efeito sépia.</td></tr>
+    <tr><td><strong>Limiar</strong></td><td>Transforma em preto e branco puro, a partir de uma faixa de tons.</td></tr>
+    <tr><td><strong>Posterizar</strong></td><td>Reduz a quantidade de tons de cor.</td></tr>
+    <tr><td><strong>Dessaturar</strong></td><td>Converte em tons de cinza.</td></tr>
+  </table>
+  <div class="caixa ideia">Todas agem sobre a <strong>camada ativa</strong>, ou só sobre a <strong>seleção</strong>, se houver uma.</div>
+  <p class="fonte">Livro, p. 75–80.</p>
+</section>
+
+<section class="slide exercicio">
+  <h2>Prática 1: o banner do site</h2>
+  <div class="duas larga-estreita">
+    <ol>
+      <li>Baixe e extraia o <a href="../pacotes/pacote-encontro-02.zip">pacote do encontro 2</a>. No GIMP, abra <code>balcao-escura.jpg</code>.</li>
+      <li><strong>Cortar</strong> (<kbd>Shift</kbd> + <kbd>C</kbd>): marque <em>Fixo: Proporção</em> 2:1, enquadre as xícaras e aperte <kbd>Enter</kbd>.</li>
+      <li><strong>Cores → Níveis:</strong> leve o triângulo branco até o fim do gráfico e ajuste o cinza.</li>
+      <li><strong>Imagem → Redimensionar imagem:</strong> largura 1600, corrente unida, interpolação Cúbica.</li>
+      <li><strong>Arquivo → Abrir como camadas:</strong> <code>logo.png</code>. Posicione com a ferramenta Mover.</li>
+      <li><strong>Salvar</strong> como <code>banner.xcf</code> e <strong>exportar como</strong> <code>banner.jpg</code>, com qualidade 80.</li>
+    </ol>
+    <div class="caixa">
+      <span class="rotulo">Anote no caderno</span>
+      <p>Resolução final.</p>
+      <p>Valores usados nos Níveis.</p>
+      <p>Peso do <code>banner.jpg</code> em bytes.</p>
+
+    </div>
+  </div>
+  <p><span class="timer" data-min="40"></span></p>
+  <p class="fonte">A resposta aparece aqui depois do próximo encontro.</p>
+  
+</section>
+
+<section class="slide secao">
+  <h2>Selecionar uma parte da imagem</h2>
+  <p>Editar só o que você quer</p>
+</section>
+
+<section class="slide">
+  <h2>Seleção: as ferramentas</h2>
+  <p>Uma <em class="termo">seleção</em> delimita uma região da camada ativa. Tudo o que você fizer depois, como pintar, apagar ou ajustar cores, afeta <strong>só o que está dentro</strong>.</p>
+  <table>
+    <tr><th>Ferramenta</th><th>Como seleciona</th><th>Quando usar</th></tr>
+    <tr><td><strong>Retangular</strong> e <strong>Elíptica</strong></td><td>Desenhando um retângulo ou uma elipse</td><td>Objetos com formas geométricas</td></tr>
+    <tr><td><strong>Livre</strong> (laço)</td><td>Arrastando ou clicando ponto a ponto</td><td>Contornos irregulares, feitos à mão</td></tr>
+    <tr><td><strong>Contígua</strong> (varinha mágica)</td><td>Pixels de cor parecida, <strong>vizinhos</strong> do clique</td><td>Área de cor uniforme e borda bem definida</td></tr>
+    <tr><td><strong>Por cor</strong></td><td>Pixels de cor parecida <strong>em toda a imagem</strong></td><td>Trocar uma cor que aparece em vários lugares</td></tr>
+    <tr><td><strong>Tesoura</strong></td><td>Pontos perto da borda; ela "gruda" no contorno</td><td>Objeto com borda nítida e forma complexa</td></tr>
+    <tr><td><strong>De frente</strong></td><td>Pré-seleção larga e pincel sobre as cores do objeto</td><td>Recortar um objeto do fundo</td></tr>
+  </table>
+  <p class="fonte">Livro, p. 46–57.</p>
+</section>
+
+<section class="slide">
+  <h2>Somar, subtrair e mover seleções</h2>
+  <div class="duas">
+    <table>
+      <tr><th>Tecla</th><th>Efeito</th></tr>
+      <tr><td><kbd>Shift</kbd> ao começar</td><td><strong>Adiciona</strong> à seleção anterior</td></tr>
+      <tr><td><kbd>Ctrl</kbd> ao começar</td><td><strong>Subtrai</strong> da seleção anterior</td></tr>
+      <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd></td><td>Fica só a <strong>interseção</strong></td></tr>
+      <tr><td><kbd>Shift</kbd> durante o desenho</td><td>Forma <strong>simétrica</strong>: quadrado ou círculo</td></tr>
+      <tr><td><kbd>Ctrl</kbd> durante o desenho</td><td>Expande <strong>a partir do centro</strong></td></tr>
+      <tr><td><kbd>Alt</kbd> + arrastar</td><td>Move <strong>a seleção</strong>, não o conteúdo</td></tr>
+      <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + arrastar</td><td>Move <strong>o conteúdo</strong> da seleção</td></tr>
+    </table>
+    <div>
+      <p>Os mesmos modos também aparecem como botões nas <strong>opções da ferramenta</strong>: substituir, adicionar, subtrair, interseção.</p>
+      <div class="caixa ideia">
+        <span class="rotulo">Exemplo: a xícara vista de cima</span>
+        <p>Um <strong>círculo</strong> com a seleção elíptica + <kbd>Shift</kbd> pega o corpo. Depois, com <kbd>Shift</kbd> ao começar, a <strong>seleção livre</strong> adiciona a alça.</p>
+      </div>
+      <p class="fonte">Livro, p. 47–49 e 52.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="slide">
+  <h2>Varinha mágica, seleção por cor e o limiar</h2>
+  <div class="duas">
+    <div>
+      <p>A <strong>seleção contígua</strong> (varinha mágica) e a <strong>seleção por cor</strong> comparam cada pixel com a cor do pixel clicado. A diferença entre elas: a contígua só pega os <strong>vizinhos</strong>; a por cor pega <strong>a imagem toda</strong>.</p>
+      <p>O <em class="termo">limiar</em> diz <strong>quanto a cor pode variar</strong> e ainda ser selecionada. Ele usa a mesma escala de 0 a 255 dos canais.</p>
+      <ul>
+        <li><strong>Limiar baixo:</strong> só cores quase idênticas; a seleção fica pequena.</li>
+        <li><strong>Limiar alto:</strong> aceita cores mais distantes; pode "vazar" para o fundo.</li>
+      </ul>
+    </div>
+    <div class="caixa ideia">
+      <span class="rotulo">Exemplo do livro</span>
+      <p>Quadrados vermelhos (R 255) com verde e azul de 0, 50, 100, 150…</p>
+      <p>Com <strong>limiar 50</strong>: entram os que variam até 50 do vermelho puro.</p>
+      <p>Com <strong>limiar 100</strong>: entram também os que variam até 100.</p>
+      <p>Arrastar o mouse depois do clique muda o limiar na hora.</p>
+    </div>
+  </div>
+  <p class="fonte">Livro, p. 52–54.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Do objeto selecionado ao fundo transparente</h2>
+  <div class="duas">
+    <ol>
+      <li><strong>Selecione o objeto</strong>, com as ferramentas e teclas que você viu.</li>
+      <li><strong>Selecionar → Inverter</strong> (<kbd>Ctrl</kbd> + <kbd>I</kbd>): agora o selecionado é o fundo.</li>
+      <li><strong>Camada → Transparência → Adicionar canal alfa</strong>. Sem alfa, apagar pinta com a cor de fundo.</li>
+      <li>Aperte <kbd>Delete</kbd>: o fundo vira transparente, mostrado como xadrez.</li>
+      <li><strong>Imagem → Cortar para a seleção</strong>, depois de inverter de novo, tira as sobras.</li>
+      <li><strong>Exportar como</strong> <code>.png</code>: o JPEG não guarda transparência.</li>
+    </ol>
+    <div class="comparar c2">
+      <figure><img src="../assets/img/encontro-02/selecao-guia.jpg" alt="Foto da xícara com um círculo amarelo no corpo e um contorno azul na alça"><figcaption><strong>Seleção</strong>círculo + alça</figcaption></figure>
+      <figure><img src="../assets/img/encontro-02/selecao-resultado.jpg" alt="Xícara recortada sobre fundo xadrez transparente"><figcaption><strong>Resultado</strong>PNG transparente</figcaption></figure>
+    </div>
+  </div>
+  <p class="fonte">Canal alfa: livro, p. 43 e 66. PNG e transparência: p. 81. A sequência de menus é nossa, conferida no GIMP atual.</p>
+  
+</section>
+
+<section class="slide exercicio">
+  <h2>Prática 2: a xícara do cardápio</h2>
+  <div class="duas larga-estreita">
+    <ol>
+      <li>Abra <code>xicara-graos.jpg</code>.</li>
+      <li><strong>Seleção elíptica:</strong> com <kbd>Shift</kbd> durante o desenho, faça um círculo no corpo da xícara. Ajuste posição e tamanho nas opções.</li>
+      <li><strong>Seleção livre:</strong> com <kbd>Shift</kbd> ao começar, contorne a alça.</li>
+      <li>Inverta, adicione o canal alfa e apague o fundo.</li>
+      <li>Inverta de novo e use <strong>Imagem → Cortar para a seleção</strong>.</li>
+      <li>Redimensione para <strong>500 pixels de largura</strong>.</li>
+      <li>Salve <code>xicara.xcf</code> e exporte <code>xicara.png</code>. Exporte também <code>xicara.jpg</code>.</li>
+    </ol>
+    <div class="caixa">
+      <span class="rotulo">Responda</span>
+      <p>O que aconteceu com o fundo no JPEG? Por quê?</p>
+      <p>Compare o peso do PNG e do JPEG.</p>
+      <p>Abra o PNG no navegador sobre uma página escura: o fundo some?</p>
+    </div>
+  </div>
+  <p><span class="timer" data-min="40"></span></p>
+  <p class="fonte">A resposta aparece aqui depois do próximo encontro.</p>
+  
+</section>
+
+<section class="slide">
+  <h2>Clonagem e restauração: apagar defeitos</h2>
+  <div class="duas">
+    <div>
+      <p>A <strong>clonagem</strong> copia uma região da imagem para outra, como um carimbo que pinta com a própria foto.</p>
+      <ol>
+        <li><kbd>Ctrl</kbd> + clique em uma área <strong>boa e parecida</strong>: é a referência.</li>
+        <li>Pinte sobre o defeito: a referência acompanha o cursor.</li>
+        <li>Em <strong>Alinhamento: Alinhado</strong>, a referência não volta ao ponto inicial ao soltar o mouse.</li>
+      </ol>
+      <p>A <strong>restauração</strong> funciona do mesmo jeito, mas <strong>mistura</strong> a cópia com a área ao redor. Fica mais natural em superfícies com textura, como uma mesa.</p>
+    </div>
+    <div class="comparar c2">
+      <figure><img src="../assets/img/encontro-02/clonagem-antes.jpg" alt="Mesa escura com uma mancha clara"><figcaption><strong>Antes</strong></figcaption></figure>
+      <figure><img src="../assets/img/encontro-02/clonagem-depois.jpg" alt="A mesma área sem a mancha"><figcaption><strong>Depois</strong></figcaption></figure>
+    </div>
+  </div>
+  <p class="fonte">Livro, p. 66–68. Mancha acrescentada por nós à foto CC0.</p>
+</section>
+
+<section class="slide exercicio">
+  <h2>Prática 3: as manchas da mesa</h2>
+  <ol>
+    <li>Abra <code>mesa-manchas.jpg</code> e encontre as <strong>quatro manchas claras</strong> na mesa.</li>
+    <li>Use a <strong>clonagem</strong> em duas delas e a <strong>restauração</strong> nas outras duas. Ajuste o tamanho do pincel para ser um pouco maior que a mancha.</li>
+    <li>Amplie para 200% e compare: onde a correção ficou mais invisível?</li>
+    <li>Exporte como <code>mesa-corrigida.jpg</code>.</li>
+  </ol>
+  <p><span class="timer" data-min="20"></span></p>
+  <p class="fonte">A resposta aparece aqui depois do próximo encontro.</p>
+  
+</section>
+
+<section class="slide exercicio">
+  <h2>Lista 2: a entrega deste encontro</h2>
+  <div class="duas">
+    <div>
+      <p>Abra a <a href="../listas/lista-02.html">Lista 2</a> e comece agora. Ela não exige programa instalado: dá para terminar em casa.</p>
+      <ul>
+        <li><strong>Parte A:</strong> camadas, canais e arquivos.</li>
+        <li><strong>Parte B:</strong> enquadrar e redimensionar.</li>
+        <li><strong>Parte C:</strong> luz e cor.</li>
+        <li><strong>Parte D:</strong> seleção e correção.</li>
+      </ul>
+    </div>
+    <div class="caixa">
+      <span class="rotulo">Para entregar</span>
+      <p>Responda em um documento ou no papel, conforme o professor orientar, e entregue pelo canal indicado.</p>
+      <p>Use o <a href="../reference/glossario.html">glossário</a> para revisar os termos.</p>
+    </div>
+  </div>
+  <p><span class="timer" data-min="22"></span></p>
+  
+</section>
+
+<section class="slide">
+  <h2>Antes de sair: salve o seu trabalho</h2>
+  <div class="duas">
+    <div class="caixa aviso">
+      <span class="rotulo">Atenção</span>
+      <p class="grande">Estas máquinas voltam ao estado original quando reiniciam.</p>
+      <p>Hoje você tem arquivos de trabalho (XCF) e de publicação (JPEG e PNG). Os dois tipos precisam ir para a nuvem.</p>
+    </div>
+    <ol>
+      <li>Na pasta <strong>UC07-seu-nome</strong> da sua nuvem, crie <strong>encontro-02</strong>.</li>
+      <li>Envie <code>banner.xcf</code>, <code>banner.jpg</code>, <code>xicara.xcf</code>, <code>xicara.png</code> e <code>mesa-corrigida.jpg</code>.</li>
+      <li>Abra a pasta em outra aba e <strong>confira</strong>.</li>
+      <li>Se tiver pendrive, faça também uma cópia.</li>
+    </ol>
+  </div>
+  <p><span class="timer" data-min="10"></span></p>
+  
+</section>
+
+<section class="slide">
+  <h2>Para fechar</h2>
+  <div class="duas">
+    <div>
+      <table>
+        <tr><th>Pedido do cliente</th><th>O que você usou</th></tr>
+        <tr><td>Banner escuro e grande</td><td>Cortar 2 : 1, Níveis, Redimensionar, camada do logo, JPEG</td></tr>
+        <tr><td>Xícara sem fundo</td><td>Seleção elíptica + livre, canal alfa, PNG</td></tr>
+        <tr><td>Manchas na mesa</td><td>Clonagem e restauração</td></tr>
+      </table>
+      <div class="caixa ideia">Trabalhe sempre no <strong>XCF</strong>, exporte no fim e mantenha o <strong>original</strong> intacto.</div>
+    </div>
+    <div class="caixa">
+      <span class="rotulo">Até o próximo encontro</span>
+      <p>Entregue a <a href="../listas/lista-02.html">Lista 2</a>.</p>
+      <p><strong>Leitura:</strong> livro, p. 39–83.</p>
+      <p>No encontro 3, o banner ganha texto, cores e composição: a identidade visual da Grão da Esquina.</p>
+    </div>
+  </div>
+  
+</section>
+
+</body>
+</html>
